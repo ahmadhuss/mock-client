@@ -16,13 +16,13 @@ app.get('/vms', function (req, res) {
 app.get('/qrcode', function (req, res) {
   let state = req.headers.state;
   var request = {
-    "domain": 'localhost',
-    "port": 3001,
+    "domain": 'stg.spm.backend.leekimhr.com',
+    "port": 6041,
     "requestPath": "/generateqrcode",
     "headers": { 'state': state },
     "method": "GET"
   };
-  requestHandler.getHttpResponse(request.domain, request.port, request.requestPath, request.headers, request.method, "")
+  requestHandler.getHttpsResponse(request.domain, request.requestPath, request.headers, request.method, "")
     .then(result => {
       res.jsonp(result.msg);
     })
